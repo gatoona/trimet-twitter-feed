@@ -1,0 +1,130 @@
+﻿.noAlerts {
+    text-align: center;
+    font-size: 90px;
+    top: 30%;
+    position: relative;
+    letter-spacing: 2px;
+}
+
+.news-wrapper {
+    font-size: 300%;
+    background-color: #000;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+}
+
+.news-wrapper .news-contents-wrapper {
+    width: 100%;
+    margin: auto;
+    height: 100%;
+}
+
+.news-wrapper .news-contents {
+    font-family: helvetica, sans-serif;
+    letter-spacing: -1px;
+    color: #FFF;
+    font-weight: bold;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    z-index: 998;
+    height: 90%;
+}
+
+.news-wrapper .odd {
+    width: 100%;
+    background-color: #333;
+    position: absolute;
+    z-index: 999;
+    height: 100%;
+}
+
+.news-wrapper .even {
+    width: 100%;
+    background-color: #000;
+    position: absolute;
+    z-index: 999;
+    height: 100%;
+}
+
+.news-wrapper .news-header {
+    text-align: center;
+    margin: 0px auto;
+    color: #000;
+    font-size: 80px;
+    font-family: helvetica, sans-serif;
+    letter-spacing: -5px;
+    font-weight: bold;
+    padding-top: 15px;
+    background: #ffba01;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffe68f), to(#ffba01));
+    /* for webkit browsers */
+    background: -moz-linear-gradient(top, #ffe68f, #ffba01);
+    /* for firefox 3.6+ */
+    position: relative;
+    clear: both;
+    height: auto;
+}
+
+.news-wrapper .news-header img {
+    height: 90px;
+    top: 9px;
+    padding-right: 20px;
+    position: relative;
+}
+
+h1 {
+    color: White;
+    font-size: 18px;
+}
+
+.clear {
+    clear: both;
+}
+
+.history {
+    padding-top: 50px;
+    float: right;
+    padding-right: 50px;
+}
+
+.description {
+    position: relative;
+    height: 100%;
+    padding-left: 50px;
+    padding-top: 50px;
+    width: 100%;
+}
+
+.description .detail {
+    overflow: hidden;
+    padding-right: 20px;
+    padding-top: 30px;
+    line-height: 80px;
+    font-size: 65px;
+    width: 95%;
+}
+
+.description img {
+    padding: 0 15px 0 0;
+    width: 60px;
+}
+
+.elipses,
+.day,
+.month {
+    display: block;
+    height: 10px;
+}
+
+h1 a,
+h1 a:active,
+h1 a:visited,
+a {
+    text-decoration: none;
+    top: 0px;
+    padding-top: 50px;
+    color: #ffe68f;
+    position: absolute;
+}

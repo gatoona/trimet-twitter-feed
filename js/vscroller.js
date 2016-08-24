@@ -159,7 +159,7 @@
 		function viewData(tweets){
 			$.each(tweets, function( index, value ) {
 				if ($('#' + value.id).length == 0) {
-					var tweet = "<li class='animated fadeIn' id='" + value.id + "'><div class='container'><div class='user-photo'><img src='" + value.userPhoto + "'></div><div class='tweet-container'><div class='user-info'><div class='username-full'>" + value.usernameFull + "</div><div class='username'>@" + value.username + "</div><div class='date-created'>" + value.dateCreated + "</div></div><div class='tweet'>" + value.postText + "</div></div></div></li>";
+					var tweet = "<li class='animated fadeIn' id='" + value.id + "'><div class='container'><div class='user-photo' style='background-image: url(" + value.userPhoto + ")'></div><div class='tweet-container'><div class='user-info'><div class='username-full'>" + value.usernameFull + "</div><div class='username'>@" + value.username + "</div><div class='date-created'>" + value.dateCreated + "</div></div><div class='tweet'>" + value.postText + "</div></div></div></li>";
 					$('#tweets').append(tweet);
 					console.log(value.id + " has been added.")
 				}

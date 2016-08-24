@@ -82,9 +82,11 @@
 }
 
 .user-photo{
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: auto;
   width: 15%;
-  vertical-align: middle;
-  text-align: center;
 }
 
 .user-photo img{

@@ -2,15 +2,20 @@
 	$.vscroller = function() {
 
 		//MM
-
 		var tweets = [];
 		var tweetIDs = [];
+		
+		var mutedUsers = [
+			4890945633,
+			5652522,
+			331774759
+		];
 
 		function loadDATA() {
 
 		  $.ajax({
 		    type: 'GET',
-		    url: 'http://beta.trimet.org/twitter/feed/searchjson.php?q=trimet&c=20',
+		    url: 'http://beta.trimet.org/twitter/feed/searchjson.php?q=trimet&c=25',
 		    cache: false,
 		    contentType: "application/json",
 		    dataType: 'json',
@@ -20,7 +25,7 @@
 		    	$('.time').text(moment().format("dddd, h:mm:ss a"))
 
 		        $.each(json.statuses, function( index, value ) {
-		        	if (!value.retweeted_status){
+		        	if (!value.retweeted_status && ($.inArray(value.user.id, mutedUsers) == -1)){
 		        		tweets.push(structureDATA(value));
 		        		tweetIDs.push(value.id_str);
 		        	}

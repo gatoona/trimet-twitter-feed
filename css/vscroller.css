@@ -9,6 +9,11 @@
   overflow:hidden;
 }
 
+.container{
+  display: table;
+  width: 100%;
+}
+
 #update-time{
   display: inline-block;
   position: fixed;

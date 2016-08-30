@@ -8,7 +8,8 @@
 		var mutedUsers = [
 			4890945633,
 			5652522,
-			331774759
+			331774759,
+			3928290978
 		];
 
 		function loadDATA() {
@@ -55,6 +56,8 @@
 		};
 
 		function structureDATA(status) {
+
+			var tweetIMG = '';
 			
 			function linkifyEntities(tweet)
 			{
@@ -120,8 +123,11 @@
 			  
 			  if(tweet.entities.hasOwnProperty('media')) {
 			    $.each(tweet.entities.media, function(i,entry) {
-			    	index_map[entry.indices[0]] = [entry.indices[1], function(text) {return "";}];
-			      // index_map[entry.indices[0]] = [entry.indices[1], function(text) {return "<img class='mediahref' src='"+escapeHTML(entry.media_url)+"'>";}];
+			    	// index_map[entry.indices[0]] = [entry.indices[1], function(text) {return "";}];
+			      index_map[entry.indices[0]] = [entry.indices[1], function(text) {
+			      	tweetIMG = escapeHTML(entry.media_url);
+			      	return "";
+			      }];
 			    });
 			  }
 			  
@@ -157,14 +163,24 @@
 		        username: status.user.screen_name,
 		        usernameFull: status.user.name,
 		        userPhoto: (status.user.profile_image_url).replace(/_normal/g, ''),
-		        postText: linkifyEntities(status)
+		        postText: linkifyEntities(status),
+		        postImage: tweetIMG
 		    }
 		};
 
 		function viewData(tweets){
 			$.each(tweets, function( index, value ) {
 				if ($('#' + value.id).length == 0) {
-					var tweet = "<li class='animated fadeIn' id='" + value.id + "'><div class='container'><div class='user-photo' style='background-image: url(" + value.userPhoto + ")'></div><div class='tweet-container'><div class='user-info'><div class='username-full'>" + value.usernameFull + "</div><div class='username'>@" + value.username + "</div><div class='date-created'>" + value.dateCreated + "</div></div><div class='tweet'>" + value.postText + "</div></div></div></li>";
+
+					if (value.postImage.length == 0){
+						value.postImage = '';
+					}
+					else {
+						value.postImage = '<div class="post-image" style="background-image: url(' + value.postImage + ')"></div>';
+					}
+
+
+					var tweet = "<li class='animated fadeIn' id='" + value.id + "'><div class='container'><div class='user-photo' style='background-image: url(" + value.userPhoto + ")'></div><div class='tweet-container'><div class='user-info'><div class='username-full'>" + value.usernameFull + "</div><div class='username'>@" + value.username + "</div><div class='date-created'>" + value.dateCreated + "</div></div><div class='tweet'>" + value.postText + "</div></div></div>" +  value.postImage + "</li>";
 					$('#tweets').append(tweet);
 					console.log(value.id + " has been added.")
 				}

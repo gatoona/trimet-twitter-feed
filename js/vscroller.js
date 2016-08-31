@@ -176,7 +176,7 @@
 						value.postImage = '';
 					}
 					else {
-						value.postImage = '<div class="post-image" style="background-image: url(' + value.postImage + ')"></div>';
+						value.postImage = '<div class="post-image" style="background-image: url(' + value.postImage + ')"><img src="' + value.postImage + '"></div>';
 					}
 
 

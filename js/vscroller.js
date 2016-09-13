@@ -157,7 +157,7 @@
 
 		    return {
 		        id: status.id_str,
-		        dateCreated: moment(status.created_at).fromNow(),
+		        dateCreated: moment(new Date(status.created_at)).fromNow(),
 		        username: status.user.screen_name,
 		        usernameFull: status.user.name,
 		        userPhoto: (status.user.profile_image_url).replace(/_normal/g, ''),

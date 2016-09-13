@@ -36,14 +36,12 @@
 		        	viewData(tweets);
 		        }
 
-		        console.log(tweetIDs);
 
 		        $('ul li').each(function(i)
 		        {
 		           var id = $(this).attr('id');
 		           if ($.inArray( id, tweetIDs) == -1){
 		           	$('#' + id).removeClass('animated fadeIn').fadeOut(300, function() {$(this).remove(); });
-		           	console.log(id + " has been removed.");
 		           }
 
 		        });
@@ -182,7 +180,6 @@
 
 					var tweet = "<li class='animated fadeIn' id='" + value.id + "'><div class='container'><div class='user-photo' style='background-image: url(" + value.userPhoto + ")'></div><div class='tweet-container'><div class='user-info'><div class='username-full'>" + value.usernameFull + "</div><div class='username'>@" + value.username + "</div><div class='date-created'>" + value.dateCreated + "</div></div><div class='tweet'>" + value.postText + "</div></div></div>" +  value.postImage + "</li>";
 					$('#tweets').append(tweet);
-					console.log(value.id + " has been added.")
 				}
 				else {
 					$('#' + value.id).find('.date-created').html(value.dateCreated);

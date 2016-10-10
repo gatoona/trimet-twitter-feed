@@ -16,9 +16,8 @@
 
 		  $.ajax({
 		    type: 'GET',
-		    url: 'http://beta.trimet.org/twitter/feed/searchjson.php?q=trimet&c=25',
+		    url: 'http://beta.trimet.org/twitter/feed/searchjson.php?q=' + searchWordSave + '&c=25',
 		    cache: false,
-		    contentType: "application/json",
 		    dataType: 'json',
 
 		    success: function(json) {

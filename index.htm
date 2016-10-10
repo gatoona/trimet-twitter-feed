@@ -16,6 +16,11 @@
   <script src="js/moment.js" type="text/javascript"></script>
 
   <script type="text/javascript">
+
+
+  var searchWordSave = null;
+  var intervalSearch = 0;
+  var ajaxSearch = 0;
   
   function scroll() {
     var dd = $('.vticker').easyTicker({
@@ -29,16 +34,42 @@
     }).data('easyTicker');
   }
 
+  var updateFeed = function(searchWord){
+    searchWordSave = searchWord;
+    
+    $('#searchWord').text(searchWord);
+    $.vscroller(searchWord);
+    intervalSearch = setInterval(function(){
+      $.vscroller(searchWord);
+    }, 30000);
 
+  }
+
+  var grabSearchWord = function(){
+    ajaxSearch = $.ajax({
+      type: 'GET',
+      url: "http://beta.trimet.org/api/echo-search/?limit=1&by=id&order=desc",
+      cache: false,
+      dataType: 'json',
+
+      success: function(json) {
+        var searchWord = json[0]['search_term'] || null;
+
+        if (searchWordSave == null || searchWordSave != searchWord){
+          clearInterval(intervalSearch);
+          updateFeed(searchWord);
+        }
+      },
+      error: function() {
+      }
+    });
+    setTimeout(grabSearchWord, 5000);
+  }
 
   $(document).ready(function () {
-    $.vscroller();
+    grabSearchWord();
     scroll();
   });
-
-  window.setInterval(function(){
-    $.vscroller();
-  }, 30000);
 
   </script>
 
@@ -46,7 +77,7 @@
 
 <body>
   <div class="header">
-    <div class="header-title">Recent Tweets about 'trimet'</div>
+    <div class="header-title">Recent Tweets about '<span id="searchWord">--</span>'</div>
     <div id="update-time">
       Updated at <span class="time">--</span>
     </div>
